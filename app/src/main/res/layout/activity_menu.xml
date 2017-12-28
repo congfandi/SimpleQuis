@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.congfandi.quisgame.activity.MenuActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/halaman_utama" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/kerongkongan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#ffdc00"
+                android:minWidth="150dp"
+                android:text="Kerongkongan" />
+
+            <Button
+                android:id="@+id/rumen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
+                android:background="#ffdc00"
+                android:minWidth="150dp"
+                android:text="Rumen &amp; Reitkkum" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/omasuum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#ffdc00"
+                android:minWidth="100dp"
+                android:text="Omasum" />
+
+            <Button
+                android:id="@+id/abomasum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
+                android:background="#ffdc00"
+                android:minWidth="100dp"
+                android:text="Abomasum" />
+
+            <Button
+                android:id="@+id/usu_halus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
+                android:background="#ffdc00"
+                android:minWidth="100dp"
+                android:text="Usus Halus" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

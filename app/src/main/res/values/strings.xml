@@ -1,4 +1,60 @@
 <resources>
     <string name="app_name">Sistem Pencernaan Sapi</string>
     <string name="create">Syaiful Yadi 2017</string>
+    <string-array name="soal">
+        <item>Sapi termasuk hewan pemakan tumbuhan, disebut juga dengan?</item>
+        <item>Setelah makanan masuk ke dalam mulut maka makanan dikunyah menggunakan?</item>
+        <item>Sebelum masuk ke lambung makanan terlebih dahulu melewati?</item>
+        <item>Di dalam lambung terdapat 4 bagian, salah satunya adalah?</item>
+        <item>Dilambung sapi terdapat perut besar yang disebut dengan apa?</item>
+        <item>Makanan yang di dalam rumen diproses dan dihaluskan dengan bantuan enzin, salah satunya adalah?</item>
+        <item>Jika sapi dalam keadaan istirahat maka makanan yang sudah di dalam perut di muntahkan kembali ke?</item>
+        <item>Setelah makanan tersebut dimuntahkan akan dikunyah kembali menggunakan gigi dan kembali masuk ke?</item>
+        <item>Didalam Retikulum makanan diproses hingga halus dan diteruskan ke?</item>
+        <item>Sebutan lain dari lambung yang sebenarnya adalah?</item>
+        <item>Makanan yang sudah diproses dalam lambung maka akan dilanjutkan ke?</item>
+        <item>Fungsi dari usus halus adalah?</item>
+    </string-array>
+    <string-array name="jawaban_a">
+        <item>Herbivora</item>
+        <item>Lidah</item>
+        <item>Kerongkongan</item>
+        <item>Gigi</item>
+        <item>Omasum</item>
+        <item>Hidrolase</item>
+        <item>Luar tubuh sapi</item>
+        <item>Retikulum</item>
+        <item>Retikulum</item>
+        <item>Rumen</item>
+        <item>Mulut</item>
+        <item>Membakar makanan</item>
+    </string-array>
+    <string-array name="jawaban_b">
+        <item>Omnivora</item>
+        <item>Gusi</item>
+        <item>Rumen</item>
+        <item>Rumen</item>
+        <item>Retikulum</item>
+        <item>Lendir</item>
+        <item>Mulut</item>
+        <item>Rumen</item>
+        <item>Omasum</item>
+        <item>Omasum</item>
+        <item>Usus halus</item>
+        <item>Menyerap makanan</item>
+    </string-array>
+    <string-array name="jawaban_c">
+        <item>Karnivora</item>
+        <item>Gigi</item>
+        <item>Usus</item>
+        <item>Kerongkongan</item>
+        <item>Rumen</item>
+        <item>Darah</item>
+        <item>Hidung</item>
+        <item>Omasum</item>
+        <item>Abomasum</item>
+        <item>Abomasum</item>
+        <item>Omasum</item>
+        <item>Mengembalikan makanan</item>
+    </string-array>
 </resources>

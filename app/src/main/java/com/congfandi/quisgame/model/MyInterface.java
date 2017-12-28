@@ -5,7 +5,7 @@ package com.congfandi.quisgame.model;
  */
 
 public class MyInterface {
-    public interface Hasil {
-        void hasil();
+    public interface Click {
+        void click();
     }
 }

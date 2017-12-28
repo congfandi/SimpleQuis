@@ -21,8 +21,19 @@
         <activity
             android:name=".activity.MainActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".activity.QuisActivity"
-            android:parentActivityName=".activity.MainActivity"/>
+        <activity
+            android:name=".activity.QuisActivity"
+            android:parentActivityName=".activity.MainActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.MenuActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.MateriActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.AnimasiActivity"
+            android:screenOrientation="landscape" />
     </application>
 
 </manifest>
