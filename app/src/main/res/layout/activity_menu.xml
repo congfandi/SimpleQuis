@@ -82,4 +82,12 @@
                 android:text="Usus Halus" />
         </LinearLayout>
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/kembali"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:src="@drawable/tbl_kembali" />
 </RelativeLayout>

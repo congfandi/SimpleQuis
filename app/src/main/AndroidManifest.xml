@@ -23,7 +23,6 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".activity.QuisActivity"
-            android:parentActivityName=".activity.MainActivity"
             android:screenOrientation="landscape" />
         <activity
             android:name=".activity.MenuActivity"
@@ -33,6 +32,9 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".activity.AnimasiActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.HalamanUtamaActivity"
             android:screenOrientation="landscape" />
     </application>
 

@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Sistem Pencernaan Sapi</string>
     <string name="create">Syaiful Yadi 2017</string>
+    <string name="large">Omasum (perut buku) berfungsi sebagai penghalus makanan secara kimiawi dengan bantuan kelenjar enzim dan di omasum terjadi proses absorpasi air
+yang dilakukan oleh dinding omasum yang berguna untuk mengurangi kadar air.</string>
     <string-array name="soal">
         <item>Sapi termasuk hewan pemakan tumbuhan, disebut juga dengan?</item>
         <item>Setelah makanan masuk ke dalam mulut maka makanan dikunyah menggunakan?</item>
@@ -56,5 +58,20 @@
         <item>Abomasum</item>
         <item>Omasum</item>
         <item>Mengembalikan makanan</item>
+    </string-array>
+
+    <string-array name="materi">
+       <!--0--> <item>Abomasum (perut masam) merupakan yang sebenarnya karena di organ inilah sistem pencernaan hewan ruminansia sacara kimiawi bekerja dengan bantuan
+enzim-enzim pencernaan.</item>
+        <!--1--> <item>Esofagus (kerongkongan) merupakan saluran penghubung antara rongga mulut dan lambung.
+Disaluran ini makanan tidak mengalami proses pencerman, kerongkongan pada hewan umumnya berukuran kecil, namun lebarnya mampu membesar
+untuk menyesuaikan ukuran dan tekstur makanannya</item>
+        <!--2--><item>Omasum (perut buku) berfungsi sebagai penghalus makanan secara kimiawi dengan bantuan kelenjar enzim dan di omasum terjadi proses absorpasi air
+yang dilakukan oleh dinding omasum yang berguna untuk mengurangi kadar air.</item>
+        <!--3--><item>Rumen (perut besar) berfungsi sebagai tempat penyimpanan sementara bagi makanan yang telah ditelan.
+di dalam rumen terdapat populasi bakteri dan protozoa yang menghasilkan beberapa enzin diantaranya hidrolase, glikosidase, amilase dan selulase.
+Retikulum (perut jala) berfungsi sebagai mengaduk makanan dan mencampur makanan sampai menjadi gumpalan-gumapalan kasar (bolus).</item>
+        <!--4--><item>Organ usus halus dan anus, di organ inilah sari-sari makanan diserap dan diedarkan oleh darah keseluruh tubuh.
+Yang selanjutnya ampas atau sisa makanan keluar melalui anus</item>
     </string-array>
 </resources>

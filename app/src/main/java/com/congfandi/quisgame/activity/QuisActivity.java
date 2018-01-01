@@ -30,7 +30,7 @@ public class QuisActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        new Setting().gonextPage(QuisActivity.this, MainActivity.class, new MyInterface.Click() {
+        new Setting().gonextPage(QuisActivity.this, HalamanUtamaActivity.class, new MyInterface.Click() {
             @Override
             public void click() {
                 finish();

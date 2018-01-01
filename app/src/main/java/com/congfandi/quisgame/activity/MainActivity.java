@@ -1,6 +1,7 @@
 package com.congfandi.quisgame.activity;
 
 import android.content.DialogInterface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -16,13 +17,15 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
     private Setting setting;
-    private boolean bunyi = true;
+    public static boolean bunyi = true;
     @BindView(R.id.play)
     protected ImageView play;
     @BindView(R.id.keluar)
     protected ImageView keluar;
     @BindView(R.id.sound)
     protected ImageView sound;
+
+    public static MediaPlayer mediaPlayer;
 
     private void close() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         finish();
+                        mediaPlayer.stop();
                     }
                 })
                 .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
@@ -45,11 +49,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
+        mediaPlayer = MediaPlayer.create(this, R.raw.play);
+        mediaPlayer.setLooping(true);
+        if (bunyi)
+            mediaPlayer.start();
+        else
+            mediaPlayer.pause();
         setting = new Setting(this);
         setting.setClick(play, R.drawable.tbl_mulai, R.drawable.tbl_mulai_roll, new MyInterface.Click() {
             @Override
             public void click() {
-                setting.gonextPage(MainActivity.this, QuisActivity.class, new MyInterface.Click() {
+                setting.gonextPage(MainActivity.this, HalamanUtamaActivity.class, new MyInterface.Click() {
                     @Override
                     public void click() {
                         finish();
@@ -66,10 +76,13 @@ public class MainActivity extends AppCompatActivity {
         setting.setClick(sound, bunyi ? R.drawable.tbl_bunyi : R.drawable.tbl_diam, bunyi ? R.drawable.tbl_diam_roll : R.drawable.tbl_bunyi_roll, new MyInterface.Click() {
             @Override
             public void click() {
-                if (bunyi)
+                if (bunyi) {
                     bunyi = false;
-                else
+                    mediaPlayer.pause();
+                } else {
+                    mediaPlayer.start();
                     bunyi = true;
+                }
                 sound.setImageResource(bunyi ? R.drawable.tbl_bunyi : R.drawable.tbl_diam);
             }
         });
