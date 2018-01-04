@@ -16,7 +16,7 @@ import butterknife.ButterKnife;
 
 public class QuisActivity extends AppCompatActivity {
     private char[] jawaban = new char[12];
-    private char[] kunci = {'a', 'c', 'a', 'b', 'c', 'a', 'b', 'a', 'b', 'c', 'b', 'b'};
+    private char[] kunci = {'a', 'c', 'a', 'b', 'c', 'a', 'b', 'a', 'b', 'c', 'b', 'b'};//kunnci jawaban
     private int index = 0;
     @BindView(R.id.soal)
     protected TextView soal;
@@ -39,7 +39,7 @@ public class QuisActivity extends AppCompatActivity {
     }
 
     private void setSoal(final int index, final char jawaban) {
-        if (index < getResources().getStringArray(R.array.soal).length) {
+        if (index < getResources().getStringArray(R.array.soal).length) {//untuk mengambil soal
             this.jawaban[index - 1] = jawaban;
             soal.setText((index + 1) + "." + getResources().getStringArray(R.array.soal)[index]);
             jawaban_a.setText("a. " + getResources().getStringArray(R.array.jawaban_a)[index]);
@@ -54,7 +54,7 @@ public class QuisActivity extends AppCompatActivity {
                 else
                     salah++;
             }
-            AlertDialog.Builder hasil = new AlertDialog.Builder(this);
+            AlertDialog.Builder hasil = new AlertDialog.Builder(this);//dialog untuk menampilkan hasil
             hasil
                     .setCancelable(false)
                     .setTitle("Hasil")
@@ -62,7 +62,7 @@ public class QuisActivity extends AppCompatActivity {
                             "Salah : " + salah)
                     .setPositiveButton("Tutup", new DialogInterface.OnClickListener() {
                         @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
+                        public void onClick(DialogInterface dialogInterface, int i) {//jika menkan tutup
                             new Setting().gonextPage(QuisActivity.this, MainActivity.class, new MyInterface.Click() {
                                 @Override
                                 public void click() {
@@ -73,7 +73,7 @@ public class QuisActivity extends AppCompatActivity {
                     })
                     .setNegativeButton("Ulang", new DialogInterface.OnClickListener() {
                         @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
+                        public void onClick(DialogInterface dialogInterface, int i) {//jika menekan ulang
                             init();
                         }
                     })
@@ -81,7 +81,7 @@ public class QuisActivity extends AppCompatActivity {
         }
     }
 
-    private void init() {
+    private void init() {//ini sialisasi awal semua variabel
         setting = new Setting(this);
         index = 0;
         soal.setText((index + 1) + "." + getResources().getStringArray(R.array.soal)[0]);
