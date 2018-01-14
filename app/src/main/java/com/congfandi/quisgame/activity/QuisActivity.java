@@ -9,14 +9,17 @@ import android.widget.TextView;
 
 import com.congfandi.quisgame.R;
 import com.congfandi.quisgame.model.MyInterface;
+import com.congfandi.quisgame.model.Quis;
 import com.congfandi.quisgame.settings.Setting;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class QuisActivity extends AppCompatActivity {
-    private char[] jawaban = new char[12];
-    private char[] kunci = {'a', 'c', 'a', 'b', 'c', 'a', 'b', 'a', 'b', 'c', 'b', 'b'};//kunnci jawaban
     private int index = 0;
     @BindView(R.id.soal)
     protected TextView soal;
@@ -27,6 +30,9 @@ public class QuisActivity extends AppCompatActivity {
     @BindView(R.id.jawaban_c)
     protected TextView jawaban_c;
     private Setting setting;
+    private List<Quis> listSoal;
+    private int benar = 0;
+    private int salah = 0;
 
     @Override
     public void onBackPressed() {
@@ -38,77 +44,123 @@ public class QuisActivity extends AppCompatActivity {
         });
     }
 
-    private void setSoal(final int index, final char jawaban) {
-        if (index < getResources().getStringArray(R.array.soal).length) {//untuk mengambil soal
-            this.jawaban[index - 1] = jawaban;
-            soal.setText((index + 1) + "." + getResources().getStringArray(R.array.soal)[index]);
-            jawaban_a.setText("a. " + getResources().getStringArray(R.array.jawaban_a)[index]);
-            jawaban_b.setText("b. " + getResources().getStringArray(R.array.jawaban_b)[index]);
-            jawaban_c.setText("c. " + getResources().getStringArray(R.array.jawaban_c)[index]);
-        } else {
-            int benar = 0;
-            int salah = 0;
-            for (int i = 0; i < kunci.length; i++) {
-                if (kunci[i] == this.jawaban[i])
-                    benar++;
-                else
-                    salah++;
-            }
-            AlertDialog.Builder hasil = new AlertDialog.Builder(this);//dialog untuk menampilkan hasil
-            hasil
-                    .setCancelable(false)
-                    .setTitle("Hasil")
-                    .setMessage("Benar : " + benar + "\n" +
-                            "Salah : " + salah)
-                    .setPositiveButton("Tutup", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {//jika menkan tutup
-                            new Setting().gonextPage(QuisActivity.this, MainActivity.class, new MyInterface.Click() {
-                                @Override
-                                public void click() {
-                                    finish();
-                                }
-                            });
-                        }
-                    })
-                    .setNegativeButton("Ulang", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {//jika menekan ulang
-                            init();
-                        }
-                    })
-                    .show();
-        }
+    private void setSoal() {
+        listSoal = new ArrayList<>();
+        listSoal.add(new Quis("Soal nomer 1", "Jawaban A", "Jawaban B", "Jawaban C", 'c'));
+        listSoal.add(new Quis("Soal nomer 2", "Jawaban A", "Jawaban B", "Jawaban C", 'a'));
+        listSoal.add(new Quis("Soal nomer 3", "Jawaban A", "Jawaban B", "Jawaban C", 'b'));
+        listSoal.add(new Quis("Soal nomer 4", "Jawaban A", "Jawaban B", "Jawaban C", 'c'));
+        listSoal.add(new Quis("Soal nomer 5", "Jawaban A", "Jawaban B", "Jawaban C", 'a'));
+        listSoal.add(new Quis("Soal nomer 6", "Jawaban A", "Jawaban B", "Jawaban C", 'a'));
+        listSoal.add(new Quis("Soal nomer 7", "Jawaban A", "Jawaban B", "Jawaban C", 'b'));
+        listSoal.add(new Quis("Soal nomer 8", "Jawaban A", "Jawaban B", "Jawaban C", 'b'));
+        listSoal.add(new Quis("Soal nomer 9", "Jawaban A", "Jawaban B", "Jawaban C", 'c'));
+        listSoal.add(new Quis("Soal nomer 10", "Jawaban A", "Jawaban B", "Jawaban C", 'c'));
+        //tambah sendiri seperti diatas ini ya
+    }
+
+    private void jawaban(final int index, final char jawaban) {
+
     }
 
     private void init() {//ini sialisasi awal semua variabel
+        benar = 0;
+        salah = 0;
+        setSoal();
         setting = new Setting(this);
-        index = 0;
-        soal.setText((index + 1) + "." + getResources().getStringArray(R.array.soal)[0]);
-        jawaban_a.setText("a. " + getResources().getStringArray(R.array.jawaban_a)[0]);
-        jawaban_b.setText("b. " + getResources().getStringArray(R.array.jawaban_b)[0]);
-        jawaban_c.setText("c. " + getResources().getStringArray(R.array.jawaban_c)[0]);
+        index = new Random().nextInt(listSoal.size());
+        soal.setText(listSoal.get(index).getSoal());
+        jawaban_a.setText("a. " + listSoal.get(index).getJawabanA());
+        jawaban_b.setText("b. " + listSoal.get(index).getJawabanB());
+        jawaban_c.setText("c. " + listSoal.get(index).getJawabanC());
         setting.setClick(jawaban_a, R.drawable.background_soal, R.drawable.background_soal2, new MyInterface.Click() {
             @Override
             public void click() {
-                index++;
-                setSoal(index, 'a');
+
+                try {
+                    if (listSoal.get(index).getKunci() == 'a' | listSoal.get(index).getKunci() == 'A')
+                        benar++;
+                    else
+                        salah++;
+                    listSoal.remove(index);
+                    index = new Random().nextInt(listSoal.size());
+                    soal.setText(listSoal.get(index).getSoal());
+                    jawaban_a.setText("a. " + listSoal.get(index).getJawabanA());
+                    jawaban_b.setText("b. " + listSoal.get(index).getJawabanB());
+                    jawaban_c.setText("c. " + listSoal.get(index).getJawabanC());
+                } catch (Exception e) {
+                    hasil();
+                }
+
             }
         });
         setting.setClick(jawaban_b, R.drawable.background_soal, R.drawable.background_soal2, new MyInterface.Click() {
             @Override
             public void click() {
-                index++;
-                setSoal(index, 'b');
+
+                try {
+                    if (listSoal.get(index).getKunci() == 'b' | listSoal.get(index).getKunci() == 'B')
+                        benar++;
+                    else
+                        salah++;
+                    listSoal.remove(index);
+                    index = new Random().nextInt(listSoal.size());
+                    soal.setText(listSoal.get(index).getSoal());
+                    jawaban_a.setText("a. " + listSoal.get(index).getJawabanA());
+                    jawaban_b.setText("b. " + listSoal.get(index).getJawabanB());
+                    jawaban_c.setText("c. " + listSoal.get(index).getJawabanC());
+                } catch (Exception e) {
+                    hasil();
+                }
+
             }
         });
         setting.setClick(jawaban_c, R.drawable.background_soal, R.drawable.background_soal2, new MyInterface.Click() {
             @Override
             public void click() {
-                index++;
-                setSoal(index, 'c');
+
+                try {
+                    if (listSoal.get(index).getKunci() == 'c' | listSoal.get(index).getKunci() == 'C')
+                        benar++;
+                    else
+                        salah++;
+                    listSoal.remove(index);
+                    index = new Random().nextInt(listSoal.size());
+                    soal.setText(listSoal.get(index).getSoal());
+                    jawaban_a.setText("a. " + listSoal.get(index).getJawabanA());
+                    jawaban_b.setText("b. " + listSoal.get(index).getJawabanB());
+                    jawaban_c.setText("c. " + listSoal.get(index).getJawabanC());
+                } catch (Exception e) {
+                    hasil();
+                }
+
             }
         });
+    }
+
+    private void hasil() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder
+                .setTitle("Hasil")
+                .setMessage("Benar = " + benar + "\nSalah = " + salah)
+                .setPositiveButton("Ulang", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        init();
+                    }
+                })
+                .setNegativeButton("Tutup", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        new Setting().gonextPage(QuisActivity.this, HalamanUtamaActivity.class, new MyInterface.Click() {
+                            @Override
+                            public void click() {
+                                finish();
+                            }
+                        });
+                    }
+                })
+                .show();
     }
 
     @Override
